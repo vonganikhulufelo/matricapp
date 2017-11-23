@@ -1,12 +1,17 @@
 <p id="notice"><%= notice %></p>
-<%= form_tag import_users_path, multipart: true, class: "form-inline my-2 my-lg-0" do %>
- <%= file_field_tag :file, class: "form-control mr-sm-2" %>
- <%= submit_tag "Upload report" ,class: "btn btn-outline-success my-2 my-sm-0"%>
- <% end %>
+<div class="row col-md-12"><div class="col-md-4"> 
+  <%= form_tag import_users_path, multipart: true, class: "form-inline" do %>
+  <span class="btn btn-xs">
+ <%= file_field_tag :file %></span>
+ <%= submit_tag "Upload report" ,class: "btn btn-xs btn-outline-success"%>
+ <% end %></div>
+  <p class="col-md-4"> <%= link_to 'Create New User', new_user_path ,class: "btn btn-outline-success" %></p>
+<p class="col-md-4"> <%= link_to 'Add School', new_user_path ,class: "btn btn-outline-success" %></p</div>
+ 
 <h1>Users</h1>
 
-<table>
-  <thead>
+<table class = "table">
+  <thead class="thead-dark">
     <tr>
       <th>Name</th>
       <th>Email</th>
@@ -16,11 +21,11 @@
 
   <tbody>
     <% @users.each do |user| %>
-      <tr>
+      <tr class = "table-striped">
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        </td><td><%= link_to 'View', user %></td>
+         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -29,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+
