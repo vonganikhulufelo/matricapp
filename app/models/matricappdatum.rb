@@ -1,5 +1,7 @@
 require 'csv'
 class Matricappdatum < ApplicationRecord
+	validates :centre_no, :school_name, presence: true, uniqueness: true
+
 	def self.import(file)
 		CSV.foreach(file.path) do | row |
 			emis, centre_no, sname, wrote_2014, passed_2014, wrote_2015, passed_2015, wrote_2016, passed_2016,
@@ -11,5 +13,12 @@ class Matricappdatum < ApplicationRecord
 			pass_rate: pass_rate,failure_rate: failure_rate, pass_rate2015: pass_rate2015, 
 			failure_rate2015: failure_rate2015, pass_rate2016: pass_rate2016, failure_rate2016: failure_rate2016)
 		end
+	end
+	def self.search(search)
+  		if search
+    		where(['centre_no ILIKE? OR school_name ILIKE?', "%#{search}%","%#{search}%"])
+  		else
+    		all
+  		end
 	end
 end
