@@ -61,6 +61,13 @@ class UsersController < ApplicationController
     end
   end
 
+    def import 
+      Matricappdatum.import(params[:file])
+      redirect_to users_path, notice: "Report added"
+    rescue
+      redirect_to users_path, notice: "Report not added"
+    end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

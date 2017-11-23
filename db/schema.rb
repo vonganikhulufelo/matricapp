@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171123080024) do
+ActiveRecord::Schema.define(version: 20171123081644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "matricappdata", force: :cascade do |t|
+    t.string "emis"
+    t.string "centre_no"
+    t.string "school_name"
+    t.integer "wrote_2014"
+    t.integer "passed_2014"
+    t.integer "wrote_2015"
+    t.integer "passed_2015"
+    t.integer "wrote_2016"
+    t.integer "passed_2016"
+    t.decimal "pass_rate"
+    t.decimal "failure_rate"
+    t.decimal "pass_rate2015"
+    t.decimal "failure_rate2015"
+    t.decimal "pass_rate2016"
+    t.decimal "failure_rate2016"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
